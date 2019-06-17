@@ -1,4 +1,4 @@
-# getent – get entries from administrative database（https://www.unixtutorial.org/commands/getent）
+# [getent – get entries from administrative database]（https://www.unixtutorial.org/commands/getent "unixtutorial"）
 *getent* is Unix command which helps you query one of the following administrative databases in Unix: passwd, group,hosts, services, protocols, or networks.
 
 ## Administrative databases in Unix
