@@ -6,30 +6,29 @@
 As you can probably see from their names, the administrative
 databases are here to help you gather the most vital
 information about your environment:
-- passwd – can be used to confirm usernames, userids, home
-- directories and full names of your users
-- group – all the information about Unix groups known to
-- your system
-services – all the Unix services configured on your
-system
-networks – networking information – what networks your
-system belongs to
-protocols – everything your system knows about network
-protocols
-How To Use getent
-My home Linux PC has a hostname of centos7. If I ever need to
-double-check which IPs this hostname points to, here’s how I
+- passwd – can be used to confirm usernames, userids, home directories and full names of your users
+- group – all the information about Unix groups known to your system
+- services – all the Unix services configured on your system
+- networks – networking information – what networks your system belongs to
+- protocols – everything your system knows about network protocols
+
+## How To Use getent
+My home Linux PC has a hostname of centos7. If I ever need to double-check which IPs this hostname points to, here’s how I
 can use getent:
+```shell
 greys@centos7:~ getent hosts centos7
 127.0.1.1 centos7
 192.168.0.2 centos7
-getent passwd
-Without additional parameters, this command will show you
-information about all the users available on your system. Most
-often this means “users locally created on your server”, but
-if NIS or LDAP are configured, this might show you a really
+```
+
+## getent passwd
+
+Without additional parameters, this command will show you information about all the users available on your system. Most
+often this means “users locally created on your server”, but if NIS or LDAP are configured, this might show you a really
 long list of all the users in your organisation.
+
 This is an example from my CentOS 7.4 setup:
+```shell
 greys@centos7:~ $ getent passwd
 root:x:0:0:root:/root:/bin/bash
 bin:x:1:1:bin:/bin:/sbin/nologin
@@ -65,19 +64,27 @@ rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
 rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
 n f s n o b o d y : x : 6 5 5 3 4 : 6 5 5 3 4 : A n o n y m o u s N F S
 User:/var/lib/nfs:/sbin/nologin
-Using getent to find a UID by username
-getent accepts various keys when searching in databases. For
-the passwd one, you can user either username or user id (UID)
+```
+
+
+## Using getent to find a UID by username
+
+getent accepts various keys when searching in databases. For the passwd one, you can user either username or user id (UID)
 to search the database.
+```shell
 greys@centos7:~ getent passwd greys
 greys:x:1000:1000:Gleb Reys,,,:/home/greys:/bin/bas
-Using getent to find a username by UID
+```
+
+## Using getent to find a username by UID
 Like I said, the opposite will work as well:
+```shell
 greys@centos7:~ getent passwd 1000
 greys:x:1000:1000:Gleb Reys,,,:/home/greys:/bin/bash
-getent group
-Without parameters, this will show you all the groups found on
-your Unix or Linux server:
+```
+## getent group
+Without parameters, this will show you all the groups found on your Unix or Linux server:
+```shell
 greys@centos7:~ $ getent group
 root:x:0:
 bin:x:1:
@@ -129,15 +136,17 @@ rpcuser:x:29:
 nfsnobody:x:65534:
 printadmin:x:989:
 vboxusers:x:988:
-Use getent to show Unix group
-If you know a Unix group name, getent will help you confirm
-its numeric group ID and show members (usernames).
-In this example below, system group mail has group ID of 12,
-and system user postfix as its member.
+```
+
+## Use getent to show Unix group
+If you know a Unix group name, getent will help you confirm its numeric group ID and show members (usernames).
+In this example below, system group mail has group ID of 12, and system user postfix as its member.
+```shell
 greys@centos7:~ $ getent group mail
 mail:x:12:postfix
-See also:
-id – print user identity
-who – see who is logged into the system
-Basic Unix/Linux commands
-Advanced Unix Commands
+```
+## See also:
+- id – print user identity
+- who – see who is logged into the system
+- Basic Unix/Linux commands
+- Advanced Unix Commands
